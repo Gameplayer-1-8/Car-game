@@ -18,14 +18,13 @@ screen = pygame.display.set_mode(size=(width, height-50))
 pygame.display.set_caption("Car Game")
 
 carImg = utils.loadImageScaled("img/car.png", 0.1)
-# Drehen Sie das Auto um 180 Grad
 carImg = pygame.transform.flip(carImg, False, True)
 bgImg = utils.loadImageSized("img/road.png", screen.get_width(), screen.get_height())
 hole = utils.loadImageScaled("img/obstacle/hole.png", 0.11)
 
 score = 0
 i = 0
-a = -screen.get_height()  # Startposition oberhalb des Bildschirms
+a = -screen.get_height() 
 c = random.randint(0, screen.get_width())
 
 gameOver = False
@@ -35,9 +34,8 @@ clock = pygame.time.Clock()
 running = True
 carPos = [int(screen.get_width()) / 2 - int(carImg.get_width()) / 2, screen.get_height() - int(carImg.get_height()) - 10]
 
-speed_increase = 0.1  # Geschwindigkeitszunahme pro Schleifendurchlauf
-speed = 5  # Startgeschwindigkeit
-
+speed_increase = 0.1 
+speed = 5 
 font = pygame.font.Font(None, 36)
 game_over_font = pygame.font.Font(None, 72)
 start_text = game_over_font.render("Car Game", True, (255, 0, 0))
@@ -95,7 +93,7 @@ while running:
          if i >= screen.get_height():
              screen.blit(bgImg, (0, i - screen.get_height()))
              i = 0
-             speed += speed_increase  # Erhöhe die Geschwindigkeit
+             speed += speed_increase  
     
          i += int(speed)
     
@@ -122,7 +120,7 @@ while running:
          screen.blit(carImg, (carPos[0], carPos[1]))
     
          if check_collision(carPos, (c, a)):
-             gameOver = True  # Game Over bei Kollision
+             gameOver = True   
     
          if move_ticker > 0:
              move_ticker -= 1
